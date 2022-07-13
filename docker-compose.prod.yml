@@ -4,6 +4,13 @@ services:
     ports:
       - '80:80'
   node-app:
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: any
+      update_config:
+        delay: 15s
+        parallelism: 2
     build: 
       context: .
       args:

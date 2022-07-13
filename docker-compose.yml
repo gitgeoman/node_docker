@@ -9,6 +9,7 @@ services:
 
   node-app:
     build: .
+    # imgage: <nazwa mojego obrazu z docker hub>
     environment:
       - PORT=3000
     depends_on:

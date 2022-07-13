@@ -3,6 +3,7 @@
 -usuwanie obrazu                        docker imgage rm <id> -f 
 
 -lista obrazów:                         docker image ls
+-zmiana nazwy obrazu                    docker image tag <stara nazwa> <nowa nazwa>
 
 -tworzenie kontenera:                   docker run -p 3000:3000 -d -v PATHTOFOLDER:PATHINCONTAINER--name node-container node-app-image
 -tworzenie kontenera z vlumemnem
