@@ -1,0 +1,41 @@
+-tworzenie obrazu:                      docker build -t <nazwa_obrazu> .
+
+-usuwanie obrazu                        docker imgage rm <id> -f 
+
+-lista obrazów:                         docker image ls
+
+-tworzenie kontenera:                   docker run -p 3000:3000 -d -v PATHTOFOLDER:PATHINCONTAINER--name node-container node-app-image
+-tworzenie kontenera z vlumemnem
+-tworzneie kontenera z zabezpieczeniem danych (zakaz modyfikacji folderu node modules)
+                                        docker run -v D:\Programowanie\Docker\yt2\:/app -v /app/node_modules -p 3000:3000 -d --name node-container node-app-image 
+-tworzenie kontenera z read only bindmount (dodaje :ro po -v path:ro)
+                                        docker run -v D:\Programowanie\Docker\yt2\:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-container node-app-image 
+
+-przekazywanie zmiennych w trakcie tworzenia (zmienna PORT): docker run -v D:\Programowanie\Docker\yt2\:/app:ro -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-container node-app-image 
+        - uwaga można też plikiem:       docker run -v D:\Programowanie\Docker\yt2\:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name node-container node-app-image 
+
+-lista kontenerów:                      docker ps
+
+-usuwanie kontenerów:                   docker rm <nazwa kontenera> -f
+                                        
+                                        docker rm node-app -fv (usuwa też volume)
+
+-usuwanie volume                        docker volume prune
+
+-logowanie do kontenerów w bash:        docker exec -it <nazwa kontenera> bash
+    -pokazanie w bash zmiennych środowiskowych printenv 
+
+-docker ip
+
+DOCKER COMPOSE
+-uruchomienie pliku yml z rebuild img:                docker-compose up -d --build
+-uruchamianie z kilku plików:                         docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.prod.yml up -d --build
+-usuwanie dockercompose                               docker-compose -f <nazwa yml> down -v
+
+
+MONGO DB
+docker exec -it <id> mongo -u "login" -p "hasło"
+
+
+Połączenie przez terminal
+    ssh root@<ADRES IP>
